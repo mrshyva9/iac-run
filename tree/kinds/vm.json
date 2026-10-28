@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "vm",
+  "role": "machine virtuelle ; ses enfants sont des applications ou devices.",
+  "provider": "qemu",
+  "risk": "medium",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health",
+    "logs",
+    "start",
+    "stop",
+    "restart"
+  ],
+  "children": [
+    "app",
+    "container",
+    "device"
+  ]
+}

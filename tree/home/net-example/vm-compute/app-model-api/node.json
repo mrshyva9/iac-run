@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0808",
+  "id": "app-model-api",
+  "kind": "app",
+  "title": "API modèle d'exemple",
+  "parent": "vm-compute",
+  "aliases": ["model-service"],
+  "addresses": [
+    {
+      "address": "192.0.2.10",
+      "network": "net-example",
+      "port": 8080
+    }
+  ],
+  "management": {
+    "ssh_alias": "example-compute.invalid",
+    "container": "example-model"
+  },
+  "runtime": {
+    "container": "example-model"
+  },
+  "health": {
+    "type": "http",
+    "url": "http://192.0.2.10:8080/"
+  },
+  "summary": "Endpoint de service fictif"
+}

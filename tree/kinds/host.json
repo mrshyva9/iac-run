@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "kind": "host",
+  "role": "machine physique ; ses enfants sont des ressources hébergées.",
+  "provider": "ssh",
+  "risk": "medium",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health",
+    "logs"
+  ],
+  "children": [
+    "network",
+    "vm",
+    "container",
+    "device",
+    "app"
+  ]
+}

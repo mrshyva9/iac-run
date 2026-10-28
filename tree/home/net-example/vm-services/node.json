@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0809",
+  "id": "vm-services",
+  "kind": "vm",
+  "title": "VM de services d'exemple",
+  "parent": "net-example",
+  "addresses": [
+    {
+      "address": "192.0.2.11/24",
+      "network": "net-example"
+    }
+  ],
+  "aliases": ["services"],
+  "management": {
+    "ssh_alias": "example-services.invalid"
+  },
+  "runtime": {
+    "start": "/usr/bin/true",
+    "stop": "/usr/bin/true",
+    "pid_file": "/run/modops/example-services/qemu.pid",
+    "qmp": "/run/modops/example-services/qmp.sock"
+  },
+  "summary": "Déclaration fictive avec commandes runtime de remplacement"
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0805",
+  "id": "br-example",
+  "kind": "bridge",
+  "title": "Bridge d'exemple",
+  "parent": "net-example",
+  "addresses": [
+    {
+      "address": "192.0.2.1/24",
+      "network": "net-example"
+    }
+  ],
+  "summary": "Endpoint bridge fictif"
+}

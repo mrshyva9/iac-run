@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "bridge",
+  "role": "pont local qui porte la passerelle du segment.",
+  "provider": "local",
+  "risk": "low",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health",
+    "start",
+    "stop"
+  ],
+  "children": [
+    "vm",
+    "container",
+    "app"
+  ]
+}

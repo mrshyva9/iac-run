@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0807",
+  "id": "dev-accelerator",
+  "kind": "device",
+  "title": "Accélérateur d'exemple",
+  "parent": "vm-compute",
+  "health": {
+    "type": "command",
+    "argv": ["true"]
+  },
+  "summary": "Périphérique de calcul fictif"
+}

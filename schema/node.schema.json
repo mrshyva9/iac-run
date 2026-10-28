@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iac-run.local/schema/node.schema.json",
+  "title": "iac-run node",
+  "description": "Métadonnées d'un nœud de l'arborescence tree/. Un nœud = un répertoire = un id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "kind", "title", "parent"],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "kind": {
+      "enum": ["site", "network", "host", "bridge", "vm", "container", "app", "device"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "parent": {
+      "type": ["string", "null"]
+    },
+    "provider": {
+      "enum": ["local", "qemu", "ssh", "docker", "http", "none"]
+    },
+    "verbs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "ls", "show", "path", "status", "health", "logs", "tree", "doctor", "ask",
+          "start", "stop", "restart",
+          "net.list", "net.create", "net.attach", "net.detach", "net.move",
+          "connect", "disconnect"
+        ]
+      }
+    },
+    "risk": {
+      "enum": ["low", "medium", "high"]
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"}
+    },
+    "addresses": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/address"}
+    },
+    "cidr": {
+      "type": "string"
+    },
+    "gateway": {
+      "type": "string"
+    },
+    "dns": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "resources": {
+      "type": "object"
+    },
+    "management": {
+      "type": "object"
+    },
+    "health": {
+      "type": "object",
+      "properties": {
+        "type": {"enum": ["http", "command", "ssh", "docker", "qemu"]},
+        "timeout_s": {"type": "number", "exclusiveMinimum": 0, "maximum": 60}
+      },
+      "required": ["type"]
+    },
+    "links": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/link"}
+    },
+    "privileges": {
+      "type": "object",
+      "properties": {
+        "run_as": {"enum": ["iac", "root"]},
+        "sudo": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "facts_from": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "ai": {
+      "type": "object",
+      "properties": {
+        "model": {"type": "string"},
+        "context_budget_tokens": {"type": "integer", "minimum": 256, "maximum": 8192},
+        "max_steps": {"type": "integer", "minimum": 1, "maximum": 12}
+      }
+    },
+    "details": {
+      "type": "object"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["address"],
+      "properties": {
+        "iface": {"type": "string"},
+        "address": {"type": "string"},
+        "network": {"type": "string"},
+        "port": {"type": "integer", "minimum": 1, "maximum": 65535},
+        "mac": {"type": "string"}
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["to"],
+      "properties": {
+        "to": {"type": "string"},
+        "protocol": {"type": "string"},
+        "port": {"type": "integer", "minimum": 1, "maximum": 65535},
+        "models": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "purpose": {"type": "string"}
+      }
+    }
+  }
+}

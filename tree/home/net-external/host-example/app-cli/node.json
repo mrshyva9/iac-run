@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0813",
+  "id": "app-cli",
+  "kind": "app",
+  "title": "Outil CLI d'exemple",
+  "parent": "host-example",
+  "provider": "local",
+  "risk": "low",
+  "verbs": ["show", "status", "health"],
+  "health": {
+    "type": "command",
+    "argv": ["true"]
+  },
+  "summary": "Application locale fictive"
+}

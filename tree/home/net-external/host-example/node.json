@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0812",
+  "id": "host-example",
+  "kind": "host",
+  "title": "Hôte d'exemple",
+  "parent": "net-external",
+  "addresses": [
+    {
+      "address": "198.51.100.3/24",
+      "network": "net-external"
+    }
+  ],
+  "summary": "Déclaration d'hôte fictive"
+}

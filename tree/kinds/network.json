@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "network",
+  "role": "segment réseau : les enfants sont ses membres directs.",
+  "provider": "local",
+  "risk": "low",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health",
+    "net.list"
+  ],
+  "children": [
+    "host",
+    "bridge",
+    "vm",
+    "container"
+  ]
+}

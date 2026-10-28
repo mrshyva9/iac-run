@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# État local : cache, verrous, vues générées, audit.
+state/
+
+# Artefacts d'outils locaux.
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v4/
+.env
+.aider*

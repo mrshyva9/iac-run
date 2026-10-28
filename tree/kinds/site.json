@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "site",
+  "role": "racine de l'arborescence ; elle ne contient que des réseaux.",
+  "provider": "local",
+  "risk": "low",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health",
+    "tree",
+    "doctor",
+    "ask",
+    "net.list"
+  ],
+  "children": [
+    "network"
+  ]
+}

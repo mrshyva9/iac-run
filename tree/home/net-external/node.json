@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0811",
+  "id": "net-external",
+  "kind": "network",
+  "title": "Réseau externe d'exemple",
+  "parent": "home",
+  "cidr": "198.51.100.0/24",
+  "summary": "Plage réseau réservée à la documentation"
+}

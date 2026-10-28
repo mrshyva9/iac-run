@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "description": "Schéma compact des verbes exposés aux agents. Les arguments sont validés par modops avant exécution.",
+  "verbs": [
+    {
+      "name": "ls",
+      "description": "Liste les enfants directs d'un nœud.",
+      "args": {"path": "string?", "depth": "integer?"},
+      "risk": "low"
+    },
+    {
+      "name": "show",
+      "description": "Affiche les métadonnées et la fiche d'un nœud.",
+      "args": {"path": "string"},
+      "risk": "low"
+    },
+    {
+      "name": "status",
+      "description": "État observé du nœud via son provider ; récursif sur demande.",
+      "args": {"path": "string?", "recursive": "boolean?"},
+      "risk": "low"
+    },
+    {
+      "name": "health",
+      "description": "Test de santé déclaré pour le nœud.",
+      "args": {"path": "string?"},
+      "risk": "low"
+    },
+    {
+      "name": "logs",
+      "description": "Dernières lignes de journal, tronquées.",
+      "args": {"path": "string", "lines": "integer?"},
+      "risk": "low"
+    },
+    {
+      "name": "net.list",
+      "description": "Liste les réseaux et bridges.",
+      "args": {},
+      "risk": "low"
+    },
+    {
+      "name": "start",
+      "description": "Démarre la ressource et vérifie sa santé.",
+      "args": {"path": "string", "dry_run": "boolean?"},
+      "risk": "medium"
+    },
+    {
+      "name": "stop",
+      "description": "Arrête la ressource sans la supprimer.",
+      "args": {"path": "string", "force": "boolean?", "dry_run": "boolean?"},
+      "risk": "medium"
+    },
+    {
+      "name": "restart",
+      "description": "Redémarre la ressource.",
+      "args": {"path": "string", "dry_run": "boolean?"},
+      "risk": "medium"
+    },
+    {
+      "name": "move",
+      "description": "Déplace un app/container/device sous un autre parent : arborescence et faits seulement, sans migrer conteneur, volume ni données.",
+      "args": {
+        "path": "string",
+        "to": "string",
+        "address": "string?",
+        "port": "integer?",
+        "dry_run": "boolean?"
+      },
+      "risk": "medium"
+    },
+    {
+      "name": "new",
+      "description": "Crée un nœud (node.json + AGENT.md) sous un parent existant.",
+      "args": {
+        "parent": "string",
+        "spec": "object",
+        "dry_run": "boolean?"
+      },
+      "risk": "medium"
+    },
+    {
+      "name": "render",
+      "description": "Matérialise une arborescence complète depuis une spécification JSON.",
+      "args": {"spec": "object", "out": "string", "dry_run": "boolean?"},
+      "risk": "medium"
+    },
+    {
+      "name": "net.create",
+      "description": "Crée un bridge et un segment réseau.",
+      "args": {"id": "string", "cidr": "string", "gateway": "string?"},
+      "risk": "medium"
+    },
+    {
+      "name": "net.attach",
+      "description": "Rattache un nœud à un réseau.",
+      "args": {"path": "string", "network": "string", "address": "string?"},
+      "risk": "high"
+    },
+    {
+      "name": "net.detach",
+      "description": "Détache un nœud d'un réseau.",
+      "args": {"path": "string", "network": "string?"},
+      "risk": "high"
+    },
+    {
+      "name": "net.move",
+      "description": "Migre un nœud vers un autre réseau.",
+      "args": {"path": "string", "to": "string", "address": "string?"},
+      "risk": "high"
+    },
+    {
+      "name": "connect",
+      "description": "Déclare et vérifie un lien entre deux services.",
+      "args": {"path": "string", "to": "string", "port": "integer"},
+      "risk": "medium"
+    },
+    {
+      "name": "disconnect",
+      "description": "Retire un lien déclaré.",
+      "args": {"path": "string", "to": "string"},
+      "risk": "medium"
+    }
+  ]
+}

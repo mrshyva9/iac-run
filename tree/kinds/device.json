@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "device",
+  "role": "périphérique physique exposé à un nœud parent.",
+  "provider": "none",
+  "risk": "low",
+  "verbs": [
+    "ls",
+    "show",
+    "path",
+    "status",
+    "health"
+  ],
+  "children": []
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "app",
+  "role": "service applicatif ; il ne contient pas d'enfant.",
+  "provider": "docker",
+  "risk": "medium",
+  "verbs": [
+    "show",
+    "status",
+    "health",
+    "logs",
+    "start",
+    "stop",
+    "restart",
+    "connect",
+    "disconnect"
+  ],
+  "children": []
+}

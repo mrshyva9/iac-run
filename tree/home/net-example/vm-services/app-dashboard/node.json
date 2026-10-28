@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "uuid": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0810",
+  "id": "app-dashboard",
+  "kind": "app",
+  "title": "Tableau de bord d'exemple",
+  "parent": "vm-services",
+  "aliases": ["dashboard"],
+  "addresses": [
+    {
+      "address": "192.0.2.11",
+      "network": "net-example",
+      "port": 8081
+    }
+  ],
+  "management": {
+    "ssh_alias": "example-services.invalid",
+    "container": "example-dashboard"
+  },
+  "runtime": {
+    "container": "example-dashboard",
+    "bind": "192.0.2.11:8081->8080"
+  },
+  "health": {
+    "type": "http",
+    "url": "http://192.0.2.11:8081/"
+  },
+  "links": [
+    {
+      "to": "8c2f5c1e-b74c-4c50-a1de-1a9c5e1b0808",
+      "protocol": "http",
+      "port": 8080,
+      "purpose": "example service dependency"
+    }
+  ],
+  "summary": "Endpoint applicatif fictif"
+}

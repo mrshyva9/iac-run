@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "root": {
+    "id": "home",
+    "title": "Site d'exemple",
+    "summary": "Arbre fictif utilisant des adresses réservées à la documentation."
+  },
+  "nodes": [
+    {
+      "id": "net-lab",
+      "kind": "network",
+      "title": "Réseau d'exemple",
+      "cidr": "192.0.2.0/24",
+      "gateway": "192.0.2.1",
+      "summary": "Segment réseau réservé à la documentation.",
+      "children": [
+        {
+          "id": "br-lab",
+          "kind": "bridge",
+          "title": "Bridge d'exemple",
+          "address": "192.0.2.1/24",
+          "iface": "br-lab",
+          "summary": "Endpoint bridge fictif."
+        },
+        {
+          "id": "vm-lab-compute",
+          "kind": "vm",
+          "title": "VM de calcul d'exemple",
+          "address": "192.0.2.10/24",
+          "summary": "Exemple déclaratif ; aucun runtime opérationnel n'est configuré.",
+          "resources": {
+            "vcpus": 2,
+            "ram_mib": 4096,
+            "disk_gib": 40
+          },
+          "management": {
+            "ssh_alias": "lab-compute.invalid"
+          },
+          "children": [
+            {
+              "id": "app-lab-model",
+              "kind": "app",
+              "title": "Service modèle d'exemple",
+              "address": "192.0.2.10",
+              "port": 8080,
+              "summary": "Endpoint de service fictif.",
+              "management": {
+                "ssh_alias": "lab-compute.invalid",
+                "container": "example-model"
+              },
+              "runtime": {
+                "container": "example-model"
+              },
+              "health": {
+                "type": "http",
+                "url": "http://192.0.2.10:8080/"
+              }
+            }
+          ]
+        },
+        {
+          "id": "vm-lab-web",
+          "kind": "vm",
+          "title": "VM web d'exemple",
+          "address": "192.0.2.11/24",
+          "summary": "Exemple déclaratif ; aucun runtime opérationnel n'est configuré.",
+          "resources": {
+            "vcpus": 2,
+            "ram_mib": 4096,
+            "disk_gib": 40
+          },
+          "management": {
+            "ssh_alias": "lab-web.invalid"
+          },
+          "children": [
+            {
+              "id": "app-lab-dashboard",
+              "kind": "app",
+              "title": "Tableau de bord d'exemple",
+              "address": "192.0.2.11",
+              "port": 8081,
+              "summary": "Endpoint applicatif fictif.",
+              "management": {
+                "ssh_alias": "lab-web.invalid",
+                "container": "example-dashboard"
+              },
+              "runtime": {
+                "container": "example-dashboard",
+                "bind": "192.0.2.11:8081->8080"
+              },
+              "health": {
+                "type": "http",
+                "url": "http://192.0.2.11:8081/"
+              },
+              "links": [
+                {
+                  "to": "app-lab-model",
+                  "protocol": "http",
+                  "port": 8080,
+                  "purpose": "example service dependency"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
